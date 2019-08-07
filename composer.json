@@ -1,0 +1,37 @@
+{
+  "name": "peterzaccha/completeness-checker",
+  "description": "A Laravel Package",
+  "license": "MIT",
+  "authors": [
+  ],
+  "minimum-stability": "stable",
+  "require": {
+      "php" : "^7.2",
+      "illuminate/support": "5.8.*"
+  },
+  "require-dev": {
+    "phpunit/phpunit": "^6.3|^7.0",
+    "orchestra/testbench": "~3.6.0|~3.7.0"
+  },
+  "autoload": {
+    "psr-4": {
+      "Peterzaccha\\CompletenessChecker\\": "src"
+    }
+  },
+  "autoload-dev": {
+    "psr-4": {
+      "Peterzaccha\\CompletenessChecker\\Test\\": "tests"
+    }
+  },
+  "extra": {
+    "laravel": {
+      "providers": [
+        "Peterzaccha\\CompletenessChecker\\CompletenessCheckerServiceProvider"
+      ]
+    }
+  },
+  "scripts": {
+    "test": "vendor/bin/phpunit",
+    "test:windows": "vendor\\bin\\phpunit"
+  }
+}
