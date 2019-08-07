@@ -2,6 +2,8 @@
 
 namespace Peterzaccha\CompletenessChecker;
 
+use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\Blade;
 use Illuminate\Support\ServiceProvider;
 
 class CompletenessCheckerServiceProvider extends ServiceProvider
@@ -20,7 +22,16 @@ class CompletenessCheckerServiceProvider extends ServiceProvider
      */
     public function boot()
     {
+        $this->publishes([
+            __DIR__.'/../config/completeness-checker.php' => config_path('completeness-checker.php'),
+        ], 'config');
 
+        Blade::directive('completed', function(Model $model) {
+            if ($model->isComplete()){
+                return config('completeness-checker.completedSign');
+            }
+            return config('completeness-checker.uncompletedSign');
+        });
     }
 
 
