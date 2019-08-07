@@ -26,8 +26,8 @@ class CompletenessCheckerServiceProvider extends ServiceProvider
             __DIR__.'/../config/completeness-checker.php' => config_path('completeness-checker.php'),
         ], 'config');
 
-        Blade::directive('completed', function(Model $model) {
-            if ($model->isComplete()){
+        Blade::directive('completed', function($completed) {
+            if ($completed){
                 return config('completeness-checker.completedSign');
             }
             return config('completeness-checker.uncompletedSign');
